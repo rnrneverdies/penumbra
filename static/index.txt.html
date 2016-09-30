@@ -1,14 +1,30 @@
 <html>
 <body>
-<h1>Penumbra, Story Mode:</h1>
-<p>We recommend you the {{recommendedEclipse.title}} {{recommendedEclipse.type}} eclipse of {{recommendedEclipse.date}}.</p>
+<h1>Penumbra, Story Mode</h1>
+<h2>This is the information for the {{recommendedEclipse.title}} {{recommendedEclipse.type}} eclipse of {{recommendedEclipse.displayDate}}.</h2>
 <p>At your current location, {{userLocation.title}}, the event will be {{recommendedEclipse.circum.eventType}},
- the moon disc will start eclipsing the sun at {{recommendedEclipse.circum.partialEclipseStartTime}},
-{{#recommendedEclipse.circum.isTotal}} the total phase will last {{recommendedEclipse.circum.centralEclipseDuration}}
- starting at {{recommendedEclipse.circum.centralEclipseStartTime}} and finishing at {{recommendedEclipse.circum.centralEclipseEndTime}}    
+ the moon disc will start eclipsing the sun at {{recommendedEclipse.circum.partialEclipseStartTime.utcString}} UTC,
+{{#recommendedEclipse.circum.isTotal}} the total phase will last about {{recommendedEclipse.circum.centralEclipseDuration.utcString}} minutes, 
+ starting at {{recommendedEclipse.circum.centralEclipseStartTime.utcString}} UTC and ending at {{recommendedEclipse.circum.centralEclipseEndTime.utcString}} UTC   
 {{/recommendedEclipse.circum.isTotal}}
- reaching its maximun at {{recommendedEclipse.circum.maximunEclipseTime}} while covering the {{recommendedEclipse.circum.coverage}} of the sun with magnitude of {{recommendedEclipse.circum.magnitude}}.</p>
-<p>Finnaly the event will finish at {{recommendedEclipse.circum.partialEclipseEndTime}}.</p>
+ reaching its maximun at {{recommendedEclipse.circum.maximunEclipseTime.utcString}} UTC while covering the {{recommendedEclipse.circum.magnitude.percent}} of the sun and darkening the sky about {{recommendedEclipse.circum.coverage.percent}}.</p>
+<p>Finally the moon will stop eclipsing the sun disc at {{recommendedEclipse.circum.partialEclipseEndTime.utcString}} UTC.</p>
+<hr />
+<strong>Explore more cities</strong>
+<ul>
+    <li><a href="/story/20170821/34.0192276/-118.9722?city=Los%20Angeles&country=USA&region=California">Los Angeles, CA</a></li>
+    <li><a href="/story/20170821/44.6271/-123.1600?city=Albany&country=US&region=Oregon">Albany, OR</a></li>
+    <li><a href="/story/20170821/40.7765/-112.0605?city=Salt%20Lake%20City&country=US&region=Utah">Salt Lake City, UT</a></li>
+    <li><a href="/story/20170821/40.7706142/-99.77451?city=Lexington&country=US&region=Nebraska">Lexington, NE</a></li>
+    <li><a href="/story/20170821/28.4810972/-81.5088?city=Orlando&country=US&region=Florida">Orlando, FL</a></li>
+    <li><a href="/story/20170821/40.705311/-74.2581?city=New%20York&country=US&region=New%20York">New York, NY</a></li>
+    <li><a href="/story/20170226/-45.8370484/-67.6413904?city=Comodoro%20Rivadavia&country=AR&region=Chubut">Comodoro Rivadavia, AR</a></li>
+    <li><a href="/story/20170226/-45.5775947/-72.0692555?city=Coyhaique&country=CL&region=XI%20Región">Coyhaique, CL</a></li>
+    <li><a href="/story/20170226/-34.6667/-58.6667?city=Lomas%20del%20Mirador&country=AR&region=Buenos%20Aires">Lomas del Mirador, AR</a></li>
+    <li><a href="/story/20170226/-41.1348364/-71.4800?city=San%20Carlos%20de%20Bariloche&country=AR&region=Rio%20Negro">Bariloche, AR</a></li>
+    <li><a href="/story/20170226/-31.3993437/-64.33443?city=Cordoba&country=AR&region=Cordoba">Cordoba, AR</a></li>
+    <li><a href="/story/20170226/-33.4724727/-70.9100?city=Santiago%20de%20Chile&country=CL&region=Metropolitan%20Region">Santiago, CL</a></li>
+</ul>
 <footer>Penumbra is a tool created for fun to help you to experiment an eclipse.</footer>
 </body>
 </html>

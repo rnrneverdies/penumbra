@@ -37,6 +37,10 @@ app.get('/', function (req, res) {
             // prepare the new location url
             var newUrl = '/' + eclipse.data.id + '/' + locParts[0] + '/' + locParts[1];
 
+            // text based web browsers uses story mode
+            if (isTextBasedBrowser(req)) {
+                newUrl = '/story' + newUrl;
+            }
             // map the query string properties
             var queryString = (['city', 'country', 'region']).map((prop) => {
                 if (ipInfo[prop]) {
@@ -182,6 +186,17 @@ function doResponse(res, view, template) {
         var output = mustache.render(data, view);
         res.send(output);
     });
+}
+
+function isTextBasedBrowser(req) {
+    try {
+        var ua = req.get('User-Agent');
+        
+        return /Lynx|w3m|lynx/.test(ua);        
+
+    } catch (e) {
+        return false;
+    }
 }
 
 module.exports = app
