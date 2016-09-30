@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Oops! Eclipse Not found, don't worry... New eclipses soon!</title>
+    <style>
+        #container {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 50%;
+            height: 50%;
+        }
+
+        @media (min-width: 500px) {
+            #container {
+                max-width: 80%;
+            }
+        }
+
+        html, body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+            width: 100%;
+            height: 100%;
+            background: #89cfeb;
+            background: linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
+            color: white;
+        }
+
+        h1 {
+            font-size: large;
+            text-align: center;
+        }
+
+        ul {
+            display: inline-block;
+            margin: 0 auto;
+            width: 35%;
+            transform: translateX(20%)            
+        }
+        
+        a {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 role="alert">Oops!! This site only have the necessary information about next two solar eclipses (Patagonia 2017 & U.S.A 2017). At this current location: {{location}} none of those eclipses are visibles even partially. Please enjoy this demo by trying one of the cities listed here</h1>
+        <ul aria-label="List of North American cities for the eclipse at August 21, 2017 ">
+            <li><a href="/20170821/34.0192276/-118.9722?city=Los%20Angeles&country=USA&region=California">Los Angeles, CA</a></li>
+            <li><a href="/20170821/44.6271/-123.1600?city=Albany&country=US&region=Oregon">Albany, OR</a></li>
+            <li><a href="/20170821/40.7765/-112.0605?city=Salt%20Lake%20City&country=US&region=Utah">Salt Lake City, UT</a></li>
+            <li><a href="/20170821/40.7706142/-99.77451?city=Lexington&country=US&region=Nebraska">Lexington, NE</a></li>
+            <li><a href="/20170821/28.4810972/-81.5088?city=Orlando&country=US&region=Florida">Orlando, FL</a></li>
+            <li><a href="/20170821/40.705311/-74.2581?city=New%20York&country=US&region=New%20York">New York, NY</a></li>
+        </ul>        
+        <ul aria-label="List of South American cities for the eclipse at February 26, 2017">
+            <li><a href="/20170226/-45.8370484/-67.6413904?city=Comodoro%20Rivadavia&country=AR&region=Chubut">Comodoro Rivadavia, AR</a></li>
+            <li><a href="/20170226/-45.5775947/-72.0692555?city=Coyhaique&country=CL&region=XI%20Región">Coyhaique, CL</a></li>
+            <li><a href="/20170226/-34.6667/-58.6667?city=Lomas%20del%20Mirador&country=AR&region=Buenos%20Aires">Lomas del Mirador, AR</a></li>
+            <li><a href="/20170226/-41.1348364/-71.4800?city=San%20Carlos%20de%20Bariloche&country=AR&region=Rio%20Negro">Bariloche, AR</a></li>
+            <li><a href="/20170226/-31.3993437/-64.33443?city=Cordoba&country=AR&region=Cordoba">Cordoba, AR</a></li>
+            <li><a href="/20170226/-33.4724727/-70.9100?city=Santiago%20de%20Chile&country=CL&region=Metropolitan%20Region">Santiago, CL</a></li>
+        </ul>
+    </div>
+    <script>        
+    </script>
+</body>
+</html>

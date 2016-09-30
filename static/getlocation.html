@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>We need your current location to predict the next eclipse visible for you.</title>
+    <style>
+        #container {
+            margin: auto;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            max-width: 50%;
+            height: 50%;
+        }
+        @media (min-width: 500px) {
+            #container {
+                max-width: 80%;
+            }
+        }
+        html, body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+            width: 100%;
+            height: 100%;
+            background: #89cfeb;
+            background: linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);
+            color: white;
+        }
+        h1 {
+            font-size: x-large;
+            text-align: center;
+        }
+        #form {
+            width: 100%;            
+        }
+        #form label {
+            width: 300px;
+            display: block;
+            width: 45%;
+            margin: auto;
+        }
+        label > input {
+            float: right;
+            width: 120px;
+        }
+        input[type=submit] {
+            margin: 20px auto;
+            display: block;
+            font-size: large;
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 2px;
+            color: white;
+        }
+         ul {
+            display: inline-block;
+            margin: 0 auto;
+            width: 35%;
+            transform: translateX(20%)            
+        }
+        
+        a {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <form name="locForm">
+            <h1 id="nopos" role="alert">Oops!! We couldn't obtain your current location, could you give us permission to obtain your current GPS position? It's safe, we won't store or share any kind information.</h1>
+            <h1 id="gpserror" role="alert" style="display: none">Oops!! Something went wrong while obtaining your GPS location, Please enjoy this demo by trying one of the cities listed here</h1>
+            <ul aria-label="List of North American cities for the eclipse at August 21, 2017 ">
+                <li><a href="/20170821/34.0192276/-118.9722?city=Los%20Angeles&country=USA&region=California">Los Angeles, CA</a></li>
+                <li><a href="/20170821/44.6271/-123.1600?city=Albany&country=US&region=Oregon">Albany, OR</a></li>
+                <li><a href="/20170821/40.7765/-112.0605?city=Salt%20Lake%20City&country=US&region=Utah">Salt Lake City, UT</a></li>
+                <li><a href="/20170821/40.7706142/-99.77451?city=Lexington&country=US&region=Nebraska">Lexington, NE</a></li>
+                <li><a href="/20170821/28.4810972/-81.5088?city=Orlando&country=US&region=Florida">Orlando, FL</a></li>
+                <li><a href="/20170821/40.705311/-74.2581?city=New%20York&country=US&region=New%20York">New York, NY</a></li>
+            </ul>
+            <ul aria-label="List of South American cities for the eclipse at February 26, 2017">
+                <li><a href="/20170226/-45.8370484/-67.6413904?city=Comodoro%20Rivadavia&country=AR&region=Chubut">Comodoro Rivadavia, AR</a></li>
+                <li><a href="/20170226/-45.5775947/-72.0692555?city=Coyhaique&country=CL&region=XI%20Región">Coyhaique, CL</a></li>
+                <li><a href="/20170226/-34.6667/-58.6667?city=Lomas%20del%20Mirador&country=AR&region=Buenos%20Aires">Lomas del Mirador, AR</a></li>
+                <li><a href="/20170226/-41.1348364/-71.4800?city=San%20Carlos%20de%20Bariloche&country=AR&region=Rio%20Negro">Bariloche, AR</a></li>
+                <li><a href="/20170226/-31.3993437/-64.33443?city=Cordoba&country=AR&region=Cordoba">Cordoba, AR</a></li>
+                <li><a href="/20170226/-33.4724727/-70.9100?city=Santiago%20de%20Chile&country=CL&region=Metropolitan%20Region">Santiago, CL</a></li>
+            </ul>
+            <div id="form" style="display: none">
+                <label>
+                    Latitude: <input name="lat" type="number" max="180.0" min="-180.0" step="0.1" value="0.0" aria-label="enter here your current latiude"/>
+                </label>
+                <label>
+                    Longitude: <input name="lon" type="number" max="90.0" min="-90.0" step="0.1" value="0.0" aria-label="enter here your current longitude"/>
+                </label>
+                <input type="submit" value="Continue"/>
+            </div>
+        </form>
+    </div>
+    <script>
+        var init = document.querySelector('#nopos');
+        var error = document.querySelector('#gpserror');
+        var form = document.querySelector('#form');
+        navigator.geolocation.getCurrentPosition(onPositionReceived, onPositionError);
+        function onPositionReceived(data) {
+            //
+            console.log(data);
+            document.getElementsByName('lat')[0].value = data.coords.latitude
+            document.getElementsByName('lon')[0].value = data.coords.longitude
+            document.locForm.submit();
+            //form.submit();
+        }
+        function onPositionError(data) {
+            // make the form visible and alert screen users.
+            error.removeAttribute('style');
+            //form.removeAttribute('style');
+            init.setAttribute('style', 'display: none');
+        }
+    </script>
+</body>
+</html>

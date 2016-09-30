@@ -1,0 +1,14 @@
+<html>
+<body>
+<h1>Penumbra, Story Mode:</h1>
+<p>We recommend you the {{recommendedEclipse.title}} {{recommendedEclipse.type}} eclipse of {{recommendedEclipse.date}}.</p>
+<p>At your current location, {{userLocation.title}}, the event will be {{recommendedEclipse.circum.eventType}},
+ the moon disc will start eclipsing the sun at {{recommendedEclipse.circum.partialEclipseStartTime}},
+{{#recommendedEclipse.circum.isTotal}} the total phase will last {{recommendedEclipse.circum.centralEclipseDuration}}
+ starting at {{recommendedEclipse.circum.centralEclipseStartTime}} and finishing at {{recommendedEclipse.circum.centralEclipseEndTime}}    
+{{/recommendedEclipse.circum.isTotal}}
+ reaching its maximun at {{recommendedEclipse.circum.maximunEclipseTime}} while covering the {{recommendedEclipse.circum.coverage}} of the sun with magnitude of {{recommendedEclipse.circum.magnitude}}.</p>
+<p>Finnaly the event will finish at {{recommendedEclipse.circum.partialEclipseEndTime}}.</p>
+<footer>Penumbra is a tool created for fun to help you to experiment an eclipse.</footer>
+</body>
+</html>

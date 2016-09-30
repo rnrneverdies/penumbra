@@ -1,0 +1,238 @@
+html, body, div, span, h1, h2, p, a, img, strong, b, canvas, footer, header {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+footer, header {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+a {
+  text-decoration: none;
+}
+strong {
+  font-weight: bold;
+}
+p[role=alert] { position:fixed; top:-1000px; left:-1000px; }
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Frutiger, "Frutiger Linotype",
+             "Dejavu Sans", "Helvetica Neue", Arial,
+             sans-serif; 
+}
+#sky, #space, #dark {
+  width: 100%;
+  height: 100%;
+}
+#dark {
+  background: black;
+  opacity: 0;
+}
+#sky {
+  background: #89cfeb;
+  background: linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%); 
+}
+#corona {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; 
+  bottom: 0; right: 0;
+  width: 200px;
+  height: 200px;
+  background: none;
+  background: radial-gradient(circle 100px at 50% 50%, #FCD440 40%, transparent); 
+}
+#sun {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; 
+  bottom: 0; right: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  background: #FDFFAC;
+  background: radial-gradient(ellipse at center, #FDFFAC 0%, #FCD440 100%);
+}
+#moon {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; 
+  bottom: 0; right: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  overflow: hidden;
+}
+#skyonmoon {
+  display: block;
+  position: relative;  
+  width: 100vw;
+  height: 100vh;
+  margin-left: calc(-50vw + 75px);
+  margin-top: calc(-50vh + 75px);
+  background: #89cfeb;
+  background-image: linear-gradient(to bottom, #57c1eb 0%, #246fa8 100%);  
+}
+#darkonmoon {
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+}
+#moon.annular {
+  width: 148px;
+  height: 148px;
+  border-radius: 74px;
+}
+.timeline { 
+  z-index: 100000;
+  width:100%;
+  border-collapse:collapse;
+}
+.timeline td {
+    padding: 0 15px 0 15px;
+}
+.timeline tr:nth-child(1) td,
+.timeline tr:nth-child(3) td {
+   padding: 15px 0;
+}
+.timeline td:nth-child(1),
+.timeline.five td:nth-child(2) {
+  text-align: left;
+}
+.timeline td:nth-child(2),
+.timeline.five td:nth-child(3) {
+  text-align: center;
+}
+.timeline td:nth-child(3),
+.timeline td:nth-child(4),
+.timeline td:nth-child(5) {
+  text-align: right;
+}
+.timeline .line {
+  line-height: 1px;
+  background: white;
+  font-size: large;
+  padding: 1px;
+}
+.sim {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    font-size: x-large;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 2px;
+}
+.sim:active,
+.sim:focus {
+    border: 1px solid white;
+}
+header {
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+footer { 
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.title  {
+    line-height: 1;    
+    font-size: x-large;
+    padding: 20px;
+}
+.r {
+    float: left;
+}
+.t {
+    font-size: large;
+    color: white;
+}
+img.loc {
+    margin-top: -5px;
+    height: 5vh;
+}
+.loc {
+    line-height: 38px;
+    vertical-align: middle;
+}
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 20px;
+    margin: 20px;
+    color: white;
+    text-align: center;
+    z-index: 2;
+}
+#menu:hover {
+    cursor: pointer;
+}
+#popup.visible {
+    visibility: visible;
+}
+#popup strong {
+    display:block;
+    color:white;
+    padding-top: 20px;
+    margin-left: 20px;
+}
+#popup {
+    visibility: hidden;
+    position: fixed;
+    top: 45px;
+    right: 0;
+    width: 250px;
+    background: black;
+    z-index: 4;
+}
+li { 
+    list-style: none;
+    margin: 2px;
+}
+li a {
+    color: white;
+}
+
+@media only screen 
+ and (max-device-width: 480px) {
+    li {
+        padding: 10px;
+    }
+    #popup li a {
+        font-size: x-large;        
+    }
+    #popup {
+        width: 100%;
+    }
+}

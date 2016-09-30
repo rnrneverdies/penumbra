@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="/ss/a.css" rel="stylesheet" type="text/css">
+    <style>
+        @keyframes transit {
+          0%    { transform: translate({{visual.startX}}, {{visual.startY}}) }
+          50%   { transform: translate({{visual.midX}}, {{visual.midY}}) }
+          100%  { transform: translate({{visual.endX}}, {{visual.endY}}) }
+        }
+        @keyframes darknes {
+          0%    { opacity: 0 }
+          10%   { opacity: 0 }
+          50%   { opacity: {{visual.obsc}} }
+          90%   { opacity: 0 }
+          100%  { opacity: 0 }
+        }
+    }
+  </style>
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <div class="t loc"><img class="loc" src="/img/loc.svg" /> {{userLocation.complete}} / <strong>{{recommendedEclipse.circum.eventType}}</strong> eclipse at {{recommendedEclipse.displayDate}}</div>
+        <table class="t timeline
+{{#recommendedEclipse.circum.isTotal}}
+five
+{{/recommendedEclipse.circum.isTotal}}
+               ">
+            <tr>
+                <td>Start</td>
+                {{#recommendedEclipse.circum.isTotal}}
+                <td>{{recommendedEclipse.circum.eventType}}</td>
+                {{/recommendedEclipse.circum.isTotal}}
+                <td>Maximun</td>
+                {{#recommendedEclipse.circum.isTotal}}
+                <td>{{recommendedEclipse.circum.eventType}}</td>
+                {{/recommendedEclipse.circum.isTotal}}
+                <td>End</td>
+            </tr>
+            <tr class="line">
+                <td>&#9660;</td>
+                <td>&#9660;</td>
+                <td>&#9660;</td>
+                {{#recommendedEclipse.circum.isTotal}}
+                <td>&#9660;</td>
+                <td>&#9660;</td>
+                {{/recommendedEclipse.circum.isTotal}}
+            </tr>
+            <tr>
+                <td><span class="pst">{{recommendedEclipse.circum.partialEclipseStartTime.utcString}}</span></td>
+                {{#recommendedEclipse.circum.isTotal}}
+                <td><span class="cst">{{recommendedEclipse.circum.centralEclipseStartTime.utcString}}</span></td>
+                {{/recommendedEclipse.circum.isTotal}}
+                <td><span class="met">{{recommendedEclipse.circum.maximunEclipseTime.utcString}}</span></td>
+                {{#recommendedEclipse.circum.isTotal}}
+                <td><span class="cst">{{recommendedEclipse.circum.centralEclipseEndTime.utcString}}</span></td>
+                {{/recommendedEclipse.circum.isTotal}}
+                <td><span class="pet">{{recommendedEclipse.circum.partialEclipseEndTime.utcString}}</span></td>
+            </tr>
+        </table>
+        <div class="t">Magnitude: <span class="mag">{{recommendedEclipse.circum.magnitude.percent}}</span></div>
+        <div class="t">Obscurance: <span class="obs">{{recommendedEclipse.circum.coverage.percent}}</span></div>
+        <div class="t">Event duration: <span class="pdr">{{recommendedEclipse.circum.partialEclipseDuration.utcString}} hs</span></div>
+        {{#recommendedEclipse.circum.isTotal}}
+        <div class="t">{{recommendedEclipse.circum.eventType}} phase duration: <span class="cdr">{{recommendedEclipse.circum.centralEclipseDuration.utcString}} min.</span></div>
+        {{/recommendedEclipse.circum.isTotal}}
+    </header>
+    <!-- mid eclipse is set for javascript diabled browsers -->
+    <div id="sky">
+        <div id="dark" style="opacity: {{visual.obsc}}"></div>
+        <div id="corona"></div>
+        <div id="sun"></div>
+    </div>
+    <div id="space">
+        <div id="moon" class="{{visual.eclipseClass}}" style="transform: translate({{visual.midX}}, {{visual.midY}});">            
+            <span id="skyonmoon" style="transform: translate({{visual.midX1}}, {{visual.midY1}});">
+            </span>
+            <span id="darkonmoon" style="opacity: {{visual.obsc}}"></span>
+        </div>        
+    </div>
+    <!-- stoy board mode alert -->
+    <p role="alert">To use the Story Mode press access key S<a accesskey="s" href="/story{{eclipseUrl}}" role="button">or click here</a></p>
+    <!-- footer -->
+    <footer>
+        <div class="t">Max. Magnitude: {{recommendedEclipse.magnitude}}</div>
+        <div class="t">Max. Obscurance: {{recommendedEclipse.coverage}}</div>    
+        <div class="t">{{recommendedEclipse.title}} - {{recommendedEclipse.displayDate}}</div>
+        <div class="t"><strong>{{recommendedEclipse.type}}</strong> eclipse, {{recommendedEclipse.sarosInfo}}</div>
+        <button id="simulate" class="sim t" onclick="simulate();">Simulate</button>
+    </footer>
+    <a id="menu" aria-haspopup="true" onclick="toggleMenu()">&#8942;</a>
+    <nav id="popup" aria-label="More cities to explore">
+        <strong>Explore more cities</strong>
+        <ul>
+            <li><a href="/20170821/34.0192276/-118.9722?city=Los%20Angeles&country=USA&region=California">Los Angeles, CA</a></li>
+            <li><a href="/20170821/44.6271/-123.1600?city=Albany&country=US&region=Oregon">Albany, OR</a></li>
+            <li><a href="/20170821/40.7765/-112.0605?city=Salt%20Lake%20City&country=US&region=Utah">Salt Lake City, UT</a></li>
+            <li><a href="/20170821/40.7706142/-99.77451?city=Lexington&country=US&region=Nebraska">Lexington, NE</a></li>
+            <li><a href="/20170821/28.4810972/-81.5088?city=Orlando&country=US&region=Florida">Orlando, FL</a></li>
+            <li><a href="/20170821/40.705311/-74.2581?city=New%20York&country=US&region=New%20York">New York, NY</a></li>
+            <li><a href="/20170226/-45.8370484/-67.6413904?city=Comodoro%20Rivadavia&country=AR&region=Chubut">Comodoro Rivadavia, AR</a></li>
+            <li><a href="/20170226/-45.5775947/-72.0692555?city=Coyhaique&country=CL&region=XI%20Región">Coyhaique, CL</a></li>
+            <li><a href="/20170226/-34.6667/-58.6667?city=Lomas%20del%20Mirador&country=AR&region=Buenos%20Aires">Lomas del Mirador, AR</a></li>
+            <li><a href="/20170226/-41.1348364/-71.4800?city=San%20Carlos%20de%20Bariloche&country=AR&region=Rio%20Negro">Bariloche, AR</a></li>
+            <li><a href="/20170226/-31.3993437/-64.33443?city=Cordoba&country=AR&region=Cordoba">Cordoba, AR</a></li>
+            <li><a href="/20170226/-33.4724727/-70.9100?city=Santiago%20de%20Chile&country=CL&region=Metropolitan%20Region">Santiago, CL</a></li>
+        </ul>
+    </nav>
+    <script>
+        "strict mode";
+        var d = document,ad = 5.0,
+        todu = {{recommendedEclipse.circum.partialEclipseDuration.seconds}},
+        mg = {{recommendedEclipse.circum.magnitude.value}} * 100,
+        ob = {{recommendedEclipse.circum.coverage.value}} * 100,
+        pdr = d.querySelector('.pdr'),
+        mag = d.querySelector('.mag'),
+        obs = d.querySelector('.obs'),
+        pdrOrig = pdr.innerHTML,
+        magOrig = mag.innerHTML,
+        obsOrig = obs.innerHTML;
+        localDates();
+        function toggleMenu() {
+            d.getElementById('popup').classList.toggle('visible');
+        }
+        if (hasGradients()) {
+            d.getElementById('skyonmoon').style.backgroundColor = "initial"
+            d.getElementById('skyonmoon').style.borderColor = "transparent"
+        }
+        window.onload = function () {
+            loadExtra();
+        }
+        function loadExtra() {
+            var js = d.createElement("script");
+            js.type = "text/javascript";
+            js.src = "/js/penumbra.js";
+            d.body.appendChild(js);
+        }
+        function localDates() {
+            var dates = [ {{recommendedEclipse.circum.partialEclipseStartTime.timestamp}},
+                        {{recommendedEclipse.circum.maximunEclipseTime.timestamp}},
+                        {{recommendedEclipse.circum.partialEclipseEndTime.timestamp}},
+                        {{recommendedEclipse.circum.centralEclipseStartTime.timestamp}},
+                        {{recommendedEclipse.circum.centralEclipseEndTime.timestamp}}
+                        ];
+            var elems = ['.pst', '.met', '.pet', '.cst', '.cet'];
+            for (var i = 0; i < elems.length; i++) {
+                var e = d.querySelector(elems[i]);
+                if (e) {
+                    var t = new Date(dates[i]);
+                    e.innerHTML = t.toTimeString().substr(0, 8);
+                }
+            }
+        }
+        var interval;
+        function simulate() {
+            var minutes = 0, ratio = (todu / 60), direction = 1, revminutes;
+            var button = d.getElementById('simulate'),
+                darkonmoon = d.getElementById('darkonmoon'),
+                dark = d.getElementById('dark'),
+                moon = d.getElementById('moon'),
+                sun = d.getElementById('sun');
+
+            button.removeAttribute('disabled','disabled');
+            dark.removeAttribute('style');
+            moon.removeAttribute('style');
+            sun.removeAttribute('style');
+            darkonmoon.removeAttribute('style');
+    
+            var newsun = sun.cloneNode(true);
+            sun.parentNode.replaceChild(newsun, sun);
+            var newmoon = moon.cloneNode(true);
+            moon.parentNode.replaceChild(newmoon, moon);
+            var newdark = dark.cloneNode(true);
+            dark.parentNode.replaceChild(newdark, dark);
+
+            var aniDurStr = ad.toFixed(1) + 's linear forwards';
+            newsun.setAttribute('style', 'animation: suncolor ' + aniDurStr)
+            newmoon.setAttribute('style', 'animation: transit ' + aniDurStr);
+            newdark.setAttribute('style', 'animation: darknes ' + aniDurStr);
+            darkonmoon = d.getElementById('darkonmoon');
+            darkonmoon.setAttribute('style', 'animation: darknes ' + ad.toFixed(1) + 's linear forwards');
+        
+            if (interval) { clearInterval(interval) }
+            interval = setInterval(function () {
+                if (minutes >= todu / 120) {
+                    direction = -1;
+                }
+                if (minutes >= todu / 60) {
+                    clearInterval(interval);
+                    button.removeAttribute('disabled');
+                    pdr.innerHTML = pdrOrig;
+                    mag.innerHTML = magOrig;
+                    obs.innerHTML = obsOrig;
+                    return;
+                }
+                pdr.innerHTML = formatUTCDuration(minutes * 60) + ' hs';
+                if (direction == 1) {
+                    mag.innerHTML = (mg * (minutes / ratio) * 2).toFixed(1) + '%';
+                    obs.innerHTML = (ob * (minutes / ratio) * 2).toFixed(1) + '%';
+                    revminutes = minutes;
+                } else {
+                    mag.innerHTML = (mg * (revminutes / ratio) * 2).toFixed(1) + '%';
+                    obs.innerHTML = (ob * (revminutes / ratio) * 2).toFixed(1) + '%';
+                    revminutes--;
+                }
+                minutes++;
+            }, ad / ratio * 1000);
+        }
+        function formatUTCDuration(s) {
+            var d = Number(s);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+            return ( h + ":" + (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s);
+        }
+        function hasGradients() {
+            var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+            var str1 = 'background-image:';
+            var str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));';
+            var str3 = 'linear-gradient(left top,#9f9, white);';
+            var css =
+                (str1 + '-webkit- '.split(' ').join(str2 + str1) +
+                    prefixes.join(str3 + str1)).slice(0, -str1.length);
+            var elem = d.createElement('div');
+            var style = elem.style;
+            style.cssText = css;
+            return ('' + style.backgroundImage).indexOf('gradient') > -1;
+        }
+    </script>
+</body>
+</html>
