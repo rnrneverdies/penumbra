@@ -31,7 +31,7 @@ Eclipse.prototype.findNearestLocation = function findNearestLocation(options) {
     var userLocation = new Location(options.lat, options.lon);
     var dist = 0.0;
     this.data.path.forEach(function (point) {
-        console.log(point);
+        //console.log(point);
         dist = point.location.distance(userLocation);
         var curr = bestMatch.location.distance(userLocation);
         //console.log(">>>>>", dist, curr);

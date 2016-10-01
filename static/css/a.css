@@ -136,18 +136,19 @@ html, body {
   font-size: large;
   padding: 1px;
 }
-.sim {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    font-size: x-large;
+button, button:active, button:focus {
+    font-size: large !important;
     background-color: transparent;
     border: 1px solid white;
     border-radius: 2px;
+    position: fixed;
+    right: 25px;
 }
-.sim:active,
-.sim:focus {
-    border: 1px solid white;
+.sim {
+    bottom: 65px;
+}
+.curl {
+    bottom: 25px;
 }
 header {
     padding: 20px;

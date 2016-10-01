@@ -87,7 +87,8 @@ five
         <div class="t">Max. Obscurance: {{recommendedEclipse.coverage}}</div>    
         <div class="t">{{recommendedEclipse.title}} - {{recommendedEclipse.displayDate}}</div>
         <div class="t"><strong>{{recommendedEclipse.type}}</strong> eclipse, {{recommendedEclipse.sarosInfo}}</div>
-        <button id="simulate" class="sim t" onclick="simulate();">Simulate</button>
+        <button class="t curl" onclick="copyUrlToClipboard()">Copy URL</button>
+        <button id="simulate" class="sim t" onclick="simulate();">Show Transit</button>
     </footer>
     <a id="menu" aria-haspopup="true" onclick="toggleMenu()">&#8942;</a>
     <nav id="popup" aria-label="More cities to explore">
@@ -226,6 +227,9 @@ five
             var style = elem.style;
             style.cssText = css;
             return ('' + style.backgroundImage).indexOf('gradient') > -1;
+        }
+        function copyUrlToClipboard() {
+            window.prompt("Copy URL to clipboard: Ctrl+C, Enter", location.href);
         }
     </script>
 </body>
