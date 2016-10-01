@@ -110,6 +110,7 @@ five
     </nav>
     <script>
         "strict mode";
+        var isMacLike = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i)?true:false;
         var d = document,ad = 5.0,
         todu = {{recommendedEclipse.circum.partialEclipseDuration.seconds}},
         mg = {{recommendedEclipse.circum.magnitude.value}} * 100,
@@ -167,7 +168,7 @@ five
             moon.removeAttribute('style');
             sun.removeAttribute('style');
             darkonmoon.removeAttribute('style');
-    
+
             var newsun = sun.cloneNode(true);
             sun.parentNode.replaceChild(newsun, sun);
             var newmoon = moon.cloneNode(true);
@@ -181,7 +182,7 @@ five
             newdark.setAttribute('style', 'animation: darknes ' + aniDurStr);
             darkonmoon = d.getElementById('darkonmoon');
             darkonmoon.setAttribute('style', 'animation: darknes ' + ad.toFixed(1) + 's linear forwards');
-        
+
             if (interval) { clearInterval(interval) }
             interval = setInterval(function () {
                 if (minutes >= todu / 120) {
@@ -229,7 +230,7 @@ five
             return ('' + style.backgroundImage).indexOf('gradient') > -1;
         }
         function copyUrlToClipboard() {
-            window.prompt("Copy URL to clipboard: Ctrl+C, Enter", location.href);
+            window.prompt("To copy the URL to clipboard, press " + (isMacLike ? "Cmd+C" : "Ctrl+C") + ", Enter", location.href);
         }
     </script>
 </body>
